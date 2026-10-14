@@ -1,3 +1,4 @@
+import 'package:flex_application/screens/exercise_sets_page.dart';
 import 'package:flutter/material.dart';
 
 import '../models/program_summary.dart';
@@ -29,6 +30,13 @@ class ProgramDetailPage extends StatelessWidget {
                 '${exercise.sets.length} sets • '
                 'Rest: ${exercise.restSeconds} seconds',
               ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (context) => ExerciseSetsPage(exercise: exercise),
+                  ),
+                );
+              },
             ),
           );
         },

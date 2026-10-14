@@ -1,3 +1,4 @@
+import 'package:flex_application/models/load_mode.dart';
 import 'package:flex_application/models/planned_set.dart';
 import 'package:flex_application/models/program_exercise.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,24 @@ class ProgramsPage extends StatelessWidget {
           ],
         ),
         ProgramExercise(name: 'Shoulder Press', restSeconds: 60),
+        ProgramExercise(
+          name: 'Push-up',
+          restSeconds: 60,
+          loadMode: LoadMode.bodyweight,
+          sets: [
+            PlannedSet(targetReps: 15, targetLoadGrams: null),
+            PlannedSet(targetReps: 12, targetLoadGrams: null),
+          ],
+        ),
+        ProgramExercise(
+          name: 'Pull-up',
+          restSeconds: 90,
+          loadMode: LoadMode.bodyweightPlusLoad,
+          sets: [
+            PlannedSet(targetReps: 8, targetLoadGrams: 5000),
+            PlannedSet(targetReps: 6, targetLoadGrams: 7500),
+          ],
+        ),
       ],
     ),
     ProgramSummary(
