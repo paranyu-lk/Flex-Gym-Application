@@ -53,6 +53,26 @@ class _ExerciseSetsPageState extends State<ExerciseSetsPage> {
     super.dispose();
   }
 
+  void _addSet() {
+    final previousWeight = _weightControllers.isEmpty
+        ? ''
+        : _weightControllers.last.text;
+
+    final previousReps = _repsControllers.isEmpty
+        ? ''
+        : _repsControllers.last.text;
+
+    setState(() {
+      _weightControllers.add(
+        TextEditingController(
+          text: widget.exercise.usesWeight ? previousWeight : '',
+        ),
+      );
+
+      _repsControllers.add(TextEditingController(text: previousReps));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final exercise = widget.exercise;
@@ -81,7 +101,7 @@ class _ExerciseSetsPageState extends State<ExerciseSetsPage> {
             ),
           ),
           const SizedBox(height: 16),
-          if (exercise.sets.isEmpty)
+          if (_repsControllers.isEmpty)
             const Text('No sets yet')
           else
             SingleChildScrollView(
@@ -96,7 +116,7 @@ class _ExerciseSetsPageState extends State<ExerciseSetsPage> {
                     ),
                   const DataColumn(label: Text('Reps'), numeric: true),
                 ],
-                rows: List.generate(exercise.sets.length, (index) {
+                rows: List.generate(_repsControllers.length, (index) {
                   return DataRow(
                     cells: [
                       DataCell(Text('${index + 1}')),
@@ -137,6 +157,12 @@ class _ExerciseSetsPageState extends State<ExerciseSetsPage> {
                 }),
               ),
             ),
+          const SizedBox(height: 16),
+          OutlinedButton.icon(
+            onPressed: _addSet,
+            icon: const Icon(Icons.add),
+            label: const Text('Add set'),
+          ),
         ],
       ),
     );
