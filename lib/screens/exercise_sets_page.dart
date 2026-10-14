@@ -1,14 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models/program_exercise.dart';
 
-class ExerciseSetsPage extends StatelessWidget {
+class ExerciseSetsPage extends StatefulWidget {
   const ExerciseSetsPage({super.key, required this.exercise});
 
   final ProgramExercise exercise;
 
   @override
+  State<ExerciseSetsPage> createState() => _ExerciseSetsPageState();
+}
+
+class _ExerciseSetsPageState extends State<ExerciseSetsPage> {
+  late final List<TextEditingController> _weightControllers;
+  late final List<TextEditingController> _repsControllers;
+  late final TextEditingController _restSecondsControllers;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _weightControllers = widget.exercise.sets.map((plannedSet) {
+      final grams = plannedSet.targetLoadGrams;
+
+      return TextEditingController(
+        text: grams == null ? '' : '${grams / 1000}',
+      );
+    }).toList();
+
+    _repsControllers = widget.exercise.sets.map((plannedSet) {
+      return TextEditingController(text: '${plannedSet.targetReps}');
+    }).toList();
+
+    _restSecondsControllers = TextEditingController(
+      text: '${widget.exercise.restSeconds}',
+    );
+  }
+
+  @override
+  void dispose() {
+    for (final controller in _weightControllers) {
+      controller.dispose();
+    }
+
+    for (final controller in _repsControllers) {
+      controller.dispose();
+    }
+
+    _restSecondsControllers.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final exercise = widget.exercise;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(exercise.name),
@@ -22,9 +70,15 @@ class ExerciseSetsPage extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
-          Text(
-            'Rest between sets: ${exercise.restSeconds} seconds',
-            style: Theme.of(context).textTheme.titleMedium,
+          TextField(
+            controller: _restSecondsControllers,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            decoration: const InputDecoration(
+              labelText: 'Rest between sets',
+              suffixText: 'seconds',
+              border: OutlineInputBorder(),
+            ),
           ),
           const SizedBox(height: 16),
           if (exercise.sets.isEmpty)
@@ -43,17 +97,41 @@ class ExerciseSetsPage extends StatelessWidget {
                   const DataColumn(label: Text('Reps'), numeric: true),
                 ],
                 rows: List.generate(exercise.sets.length, (index) {
-                  final plannedSet = exercise.sets[index];
-                  final loadGrams = plannedSet.targetLoadGrams;
-                  final weightText = loadGrams == null
-                      ? '—'
-                      : '${loadGrams / 1000}';
-
                   return DataRow(
                     cells: [
                       DataCell(Text('${index + 1}')),
-                      if (exercise.usesWeight) DataCell(Text(weightText)),
-                      DataCell(Text('${plannedSet.targetReps}')),
+                      if (exercise.usesWeight)
+                        DataCell(
+                          SizedBox(
+                            width: 88,
+                            child: TextField(
+                              controller: _weightControllers[index],
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                    decimal: true,
+                                  ),
+                              textAlign: TextAlign.right,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                isDense: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      DataCell(
+                        SizedBox(
+                          width: 72,
+                          child: TextField(
+                            controller: _repsControllers[index],
+                            keyboardType: TextInputType.number,
+                            textAlign: TextAlign.right,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              isDense: true,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   );
                 }),
