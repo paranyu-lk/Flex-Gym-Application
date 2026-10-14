@@ -1,0 +1,32 @@
+{
+  "archive_version": 1,
+  "product": "FLEX",
+  "design_version": "UI v1",
+  "archived_date": "2026-10-14",
+  "timezone": "Asia/Bangkok",
+  "source_path": "/Users/paranyu.l/.codex/visualizations/2026/10/12/01a12f15-ac5b-7011-96dc-f5a649607491/flex-black-wireframe.html",
+  "export": "visualize bundled scripts/render.py",
+  "interaction_state": "bundled defaults; not an in-chat session export",
+  "files": {
+    "DATA_MODEL.md": {
+      "sha256": "b65f2f97fbe52e80104f38fb9a68e9f95697ae8eee9f369ce0fbee95643ab366",
+      "bytes": 22470
+    },
+    "MVP_SPEC.md": {
+      "sha256": "55886a97b7b459da32ca38780ac3ce240461345ce6043e64498904b9263cb313",
+      "bytes": 18547
+    },
+    "README.md": {
+      "sha256": "b41c932633f3ccf615a5b5301385de572a027c685f8f77430d440db648636e91",
+      "bytes": 7599
+    },
+    "index.html": {
+      "sha256": "f75e6f23cf4f00d315ce7d53207217b1df5f11a6b37cf91d4b75c3f3a8575e76",
+      "bytes": 165750
+    },
+    "source.html": {
+      "sha256": "01400e55c895ea714c458d32bd84cb464367418b5e737460dec41d6e29e4a2b4",
+      "bytes": 72750
+    }
+  }
+}

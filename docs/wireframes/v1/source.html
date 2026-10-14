@@ -1,0 +1,616 @@
+<div id="flex-black-preview" class="viz-dotted-background">
+  <div class="fx-phone" aria-label="FLEX · ต้นแบบหน้าจอออกกำลังกาย">
+    <div class="fx-status"><span>9:41</span><span class="fx-island" aria-hidden="true"></span><span class="fx-device"><i data-lucide="signal" aria-hidden="true"></i><i data-lucide="wifi" aria-hidden="true"></i><i data-lucide="battery-full" aria-hidden="true"></i></span></div>
+    <header class="fx-brand"><span>FLEX<span class="fx-brand-dot">.</span></span><span class="fx-proto">WIREFRAME / ข้อมูลตัวอย่าง</span></header>
+    <main class="fx-main" id="fx-screen"></main>
+    <nav class="fx-nav" aria-label="เมนูหลัก">
+      <button type="button" data-nav="today" class="cursor-interaction"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>วันนี้</span></button>
+      <button type="button" data-nav="programs" class="cursor-interaction"><i data-lucide="notebook-tabs" aria-hidden="true"></i><span>โปรแกรม</span></button>
+      <button type="button" data-nav="schedule" class="cursor-interaction"><i data-lucide="calendar-days" aria-hidden="true"></i><span>ตาราง</span></button>
+      <button type="button" data-nav="history" class="cursor-interaction"><i data-lucide="history" aria-hidden="true"></i><span>ประวัติ</span></button>
+    </nav>
+    <div class="fx-home" aria-hidden="true"><span></span></div>
+  </div>
+  <div id="fx-announcement" class="fx-sr" aria-live="polite"></div>
+</div>
+<style>
+ #flex-black-preview {padding:26px 12px; display:flex; flex-direction:column; align-items:center;}
+ #flex-black-preview * {box-sizing:border-box;}
+ #flex-black-preview .fx-phone {--fx-bg:#090909;--fx-panel:#171717;--fx-raised:#232323;--fx-line:#343434;--fx-text:#f5f5f3;--fx-muted:#a5a5a5;--fx-radius:12px; width:100%;max-width:390px; background:var(--fx-bg);color:var(--fx-text);border:1px solid #3d3d3d;border-radius:36px;font-family:-apple-system,BlinkMacSystemFont,"Thonburi","Noto Sans Thai",sans-serif;font-size:14px;line-height:1.6; overflow:hidden;color-scheme:dark;box-shadow:0 18px 50px #0003;}
+ #flex-black-preview button,#flex-black-preview input,#flex-black-preview select {font:inherit;}
+ #flex-black-preview button {color:inherit; background:none;border:0;}
+ #flex-black-preview button:disabled {opacity:.35;cursor:default;}
+ #flex-black-preview button:focus-visible,#flex-black-preview input:focus-visible,#flex-black-preview select:focus-visible {outline:2px solid #fff;outline-offset:3px;}
+ #flex-black-preview .fx-status {height:43px;display:flex;justify-content:space-between;align-items:center;padding:0 24px;font-size:12px;font-weight:600;position:relative;}
+ #flex-black-preview .fx-island {background:#000;width:90px;height:23px;border-radius:20px;position:absolute;left:50%;transform:translateX(-50%);}
+ #flex-black-preview .fx-device {display:flex;gap:5px;}
+ #flex-black-preview svg {width:19px;height:19px;stroke-width:1.6;flex-shrink:0;}
+ #flex-black-preview .fx-device svg {width:14px;height:14px;}
+ #flex-black-preview .fx-brand {padding:15px 23px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+ #flex-black-preview .fx-brand>span:first-child {font-size:23px;font-weight:900;letter-spacing:-1px;}
+ #flex-black-preview .fx-brand-dot {color:var(--fx-muted);}
+ #flex-black-preview .fx-proto {color:var(--fx-muted);font-size:10px;letter-spacing:.5px;text-align:right;}
+ #flex-black-preview .fx-main {padding:0 23px 24px;min-height:520px;}
+ #flex-black-preview h1 {margin:0;font-size:30px;font-weight:750;line-height:1.35;letter-spacing:-.8px;overflow-wrap:anywhere;}
+ #flex-black-preview h2 {margin:0;font-size:17px;font-weight:650;line-height:1.5;}
+ #flex-black-preview p {margin:0;}
+ #flex-black-preview .fx-muted {color:var(--fx-muted);font-size:12px;}
+ #flex-black-preview .fx-eyebrow {font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--fx-muted);}
+ #flex-black-preview .fx-page-head {display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 23px;}
+ #flex-black-preview .fx-page-head .fx-muted {margin-top:5px;}
+ #flex-black-preview .fx-outline-icon {width:44px;height:44px;border:1px solid var(--fx-line);border-radius:var(--fx-radius);display:grid;place-items:center;flex-shrink:0;}
+ #flex-black-preview .fx-hero {background:var(--fx-panel);border:1px solid var(--fx-line);border-radius:var(--fx-radius);padding:21px 19px;position:relative;}
+ #flex-black-preview .fx-hero:before {content:"";display:block;position:absolute;left:-1px;top:23px;width:3px;height:43px;background:var(--fx-text);}
+ #flex-black-preview .fx-hero-top {display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:19px;}
+ #flex-black-preview .fx-tag {display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border:1px solid var(--fx-line);border-radius:5px;font-size:10px;font-weight:600;letter-spacing:.4px;}
+ #flex-black-preview .fx-hero-title {font-size:37px;font-weight:850;letter-spacing:-1.3px;line-height:1.08;margin-bottom:9px;}
+ #flex-black-preview .fx-facts {display:flex;gap:0;margin:23px 0;}
+ #flex-black-preview .fx-fact {flex:1;}
+ #flex-black-preview .fx-fact+.fx-fact {padding-left:17px;border-left:1px solid var(--fx-line);}
+ #flex-black-preview .fx-fact strong {display:block;font-size:22px;line-height:1.3;font-weight:700;font-variant-numeric:tabular-nums;}
+ #flex-black-preview .fx-fact span {font-size:11px;color:var(--fx-muted);}
+ #flex-black-preview .fx-primary {min-height:49px;background:var(--fx-text);color:var(--fx-bg);border-radius:calc(var(--fx-radius) - 3px);width:100%;padding:11px 14px;display:flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:14px;}
+ #flex-black-preview .fx-secondary {min-height:44px;border:1px solid var(--fx-line);border-radius:calc(var(--fx-radius) - 3px);padding:9px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;}
+ #flex-black-preview .fx-section {display:flex;justify-content:space-between;align-items:center;gap:8px;margin:24px 0 5px;}
+ #flex-black-preview .fx-section h2 {font-size:14px;}
+ #flex-black-preview .fx-text-btn {min-height:44px;padding:8px 0 8px 8px;font-size:12px;color:var(--fx-muted);display:inline-flex;align-items:center;gap:5px;}
+ #flex-black-preview .fx-exercise {display:flex;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid var(--fx-line);}
+ #flex-black-preview .fx-index {font-size:12px;color:var(--fx-muted);font-variant-numeric:tabular-nums;width:27px;}
+ #flex-black-preview .fx-exercise-title {font-size:14px;font-weight:600;}
+ #flex-black-preview .fx-exercise .fx-muted {font-size:11px;margin-top:2px;}
+ #flex-black-preview .fx-right {margin-left:auto;}
+ #flex-black-preview .fx-round {width:30px;height:30px;border:1px solid var(--fx-line);border-radius:50%;display:grid;place-items:center;color:var(--fx-muted);}
+ #flex-black-preview .fx-round svg {width:14px;height:14px;}
+ #flex-black-preview .fx-nav {display:grid;grid-template-columns:repeat(4,1fr);padding:9px 12px 0;border-top:1px solid var(--fx-line);background:var(--fx-bg);}
+ #flex-black-preview .fx-nav button {min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--fx-muted);font-size:10px;position:relative;}
+ #flex-black-preview .fx-nav button[aria-current="page"] {color:var(--fx-text);}
+ #flex-black-preview .fx-nav button[aria-current="page"]:before {content:"";width:18px;height:2px;position:absolute;top:-10px;background:var(--fx-text);}
+ #flex-black-preview .fx-home {height:23px;display:flex;align-items:center;justify-content:center;}
+ #flex-black-preview .fx-home span {width:105px;height:4px;background:var(--fx-text);border-radius:4px;}
+ #flex-black-preview .fx-week {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:17px 0 25px;}
+ #flex-black-preview .fx-day {border-radius:9px;padding:10px 1px 8px;min-height:77px;display:flex;flex-direction:column;align-items:center;gap:7px;border:1px solid transparent;color:var(--fx-muted);}
+ #flex-black-preview .fx-day span {font-size:10px;}
+ #flex-black-preview .fx-day b {font-size:17px;font-weight:600;}
+ #flex-black-preview .fx-day i {height:4px;width:4px;background:var(--fx-muted);border-radius:50%;}
+ #flex-black-preview .fx-day[aria-pressed="true"] {background:var(--fx-text);color:var(--fx-bg);}
+ #flex-black-preview .fx-day[aria-pressed="true"] i {background:var(--fx-bg);}
+ #flex-black-preview .fx-day[data-today="true"] {border-color:var(--fx-line);}
+ #flex-black-preview .fx-line-head {display:flex;justify-content:space-between;align-items:center;gap:12px;}
+ #flex-black-preview .fx-plan {display:flex;gap:15px;margin-top:16px;align-items:stretch;}
+ #flex-black-preview .fx-time {font-size:12px;font-variant-numeric:tabular-nums;color:var(--fx-muted);padding-top:19px;}
+ #flex-black-preview .fx-plan-box {flex:1;border-left:2px solid var(--fx-text);background:var(--fx-panel);border-radius:0 var(--fx-radius) var(--fx-radius) 0;padding:18px 14px;}
+ #flex-black-preview .fx-plan-box h2 {font-size:16px;margin-top:9px;}
+ #flex-black-preview .fx-plan-box .fx-secondary {margin-top:16px;width:100%;}
+ #flex-black-preview .fx-empty {padding:36px 16px;text-align:center;border:1px dashed var(--fx-line);border-radius:var(--fx-radius);margin-top:18px;}
+ #flex-black-preview .fx-empty>svg {width:28px;height:28px;margin:0 auto 12px;}
+ #flex-black-preview .fx-empty .fx-primary {margin-top:22px;}
+ #flex-black-preview .fx-note {font-size:11px;color:var(--fx-muted);margin-top:20px;display:flex;gap:7px;align-items:flex-start;}
+ #flex-black-preview .fx-note svg {width:15px;height:15px;margin-top:1px;}
+ #flex-black-preview .fx-history-summary {display:flex;align-items:center;gap:12px;background:var(--fx-panel);border-radius:var(--fx-radius);padding:17px;margin-bottom:23px;}
+ #flex-black-preview .fx-history-summary strong {font-size:35px;font-weight:750;line-height:1.2;}
+ #flex-black-preview .fx-history-item {display:flex;text-align:left;align-items:center;gap:13px;width:100%;padding:19px 0;border-bottom:1px solid var(--fx-line);}
+ #flex-black-preview .fx-date-block {width:43px;flex-shrink:0;text-align:center;border:1px solid var(--fx-line);border-radius:8px;padding:7px 2px;}
+ #flex-black-preview .fx-date-block b {font-size:19px;display:block;line-height:1.3;}
+ #flex-black-preview .fx-date-block span {font-size:10px;color:var(--fx-muted);}
+ #flex-black-preview .fx-back {min-height:44px;display:inline-flex;align-items:center;gap:7px;color:var(--fx-muted);font-size:12px;margin-bottom:9px;padding:0;}
+ #flex-black-preview .fx-progress {height:4px;background:var(--fx-raised);border-radius:4px;margin:15px 0 22px;overflow:hidden;}
+ #flex-black-preview .fx-progress span {height:100%;display:block;background:var(--fx-text);}
+ #flex-black-preview .fx-workout-tabs {display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:22px;}
+ #flex-black-preview .fx-workout-tabs button {min-height:44px;border:1px solid var(--fx-line);border-radius:7px;font-size:12px;color:var(--fx-muted);}
+ #flex-black-preview .fx-workout-tabs button[aria-pressed="true"] {border-color:var(--fx-text);background:var(--fx-panel);color:var(--fx-text);}
+ #flex-black-preview .fx-record {margin-top:20px;}
+ #flex-black-preview .fx-set {display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 44px;gap:7px;align-items:center;margin:9px 0;}
+ #flex-black-preview .fx-set.fx-bodyweight {grid-template-columns:44px minmax(0,1fr) 44px;}
+ #flex-black-preview .fx-set.fx-planning {grid-template-columns:44px minmax(0,1fr) minmax(0,1fr);}
+ #flex-black-preview .fx-set.fx-planning.fx-bodyweight {grid-template-columns:44px minmax(0,1fr);}
+ #flex-black-preview .fx-set-label {font-size:11px;color:var(--fx-muted);text-align:center;}
+ #flex-black-preview .fx-set input {width:100%;min-width:0;background:var(--fx-panel);color:var(--fx-text);border:1px solid var(--fx-line);border-radius:7px;padding:10px 5px;text-align:center;height:45px;font-size:16px;font-variant-numeric:tabular-nums;}
+ #flex-black-preview .fx-set input:disabled {color:var(--fx-muted);}
+ #flex-black-preview .fx-check {width:44px;height:45px;border:1px solid var(--fx-line);border-radius:7px;display:grid;place-items:center;}
+ #flex-black-preview .fx-check[aria-pressed="true"] {background:var(--fx-text);color:var(--fx-bg);border-color:var(--fx-text);}
+ #flex-black-preview .fx-swipe {position:relative;overflow:hidden;border-radius:7px;margin:9px 0;touch-action:pan-y;}
+ #flex-black-preview .fx-swipe-front {position:relative;background:var(--fx-bg);margin:0;transform:translateX(0);transition:transform 180ms ease;touch-action:pan-y;}
+ #flex-black-preview .fx-swipe.is-open .fx-swipe-front {transform:translateX(-86px);}
+ #flex-black-preview .fx-swipe.is-dragging .fx-swipe-front {transition:none;user-select:none;}
+ #flex-black-preview .fx-set-options {width:44px;min-height:45px;padding:0;display:flex;align-items:center;justify-content:center;color:var(--fx-muted);font-size:12px;touch-action:pan-y;}
+ #flex-black-preview .fx-delete {position:absolute;right:0;top:0;bottom:0;width:76px;min-height:45px;border-radius:7px;display:flex;align-items:center;justify-content:center;gap:5px;background:#ad3039;color:#fff;font-size:12px;}
+ #flex-black-preview .fx-delete[hidden] {display:none;}
+ #flex-black-preview .fx-delete svg {width:17px;height:17px;}
+ #flex-black-preview .fx-swipe-hint {display:flex;justify-content:flex-end;align-items:center;gap:5px;color:var(--fx-muted);font-size:11px;margin:0 0 6px;}
+ #flex-black-preview .fx-swipe-hint svg {width:14px;height:14px;}
+ @media(prefers-reduced-motion:reduce) {#flex-black-preview .fx-swipe-front {transition:none;}}
+ #flex-black-preview .fx-rest-setting {display:flex;justify-content:space-between;align-items:center;gap:12px;margin:19px 0 12px;}
+ #flex-black-preview .fx-rest-setting label {font-size:12px;display:flex;align-items:center;gap:7px;}
+ #flex-black-preview .fx-rest-value {display:flex;align-items:center;gap:7px;font-size:12px;color:var(--fx-muted);}
+ #flex-black-preview .fx-rest-value input {width:73px;min-height:44px;border:1px solid var(--fx-line);border-radius:7px;background:var(--fx-panel);color:var(--fx-text);padding:8px;font-size:16px;text-align:center;}
+ #flex-black-preview .fx-rest-hint {font-size:11px;color:var(--fx-muted);margin-bottom:15px;}
+ #flex-black-preview .fx-rest {background:var(--fx-panel);border:1px solid var(--fx-line);border-radius:var(--fx-radius);padding:15px;margin:0 0 17px;}
+ #flex-black-preview .fx-rest-heading {display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;}
+ #flex-black-preview .fx-rest-clock {font-size:39px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:1px;line-height:1.3;}
+ #flex-black-preview .fx-rest-main {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+ #flex-black-preview .fx-rest-meter {height:3px;background:var(--fx-raised);border-radius:4px;overflow:hidden;margin-top:12px;}
+ #flex-black-preview .fx-rest-meter span {display:block;height:100%;background:var(--fx-text);}
+ #flex-black-preview .fx-rest[data-status="done"] {border-color:var(--fx-text);}
+ #flex-black-preview .fx-rest .fx-muted {font-size:11px;margin-top:4px;}
+ #flex-black-preview .fx-undo {display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--fx-panel);border-left:2px solid var(--fx-text);padding:3px 12px;margin:12px 0;font-size:12px;}
+ #flex-black-preview .fx-undo button {color:var(--fx-text);white-space:nowrap;}
+ #flex-black-preview .fx-form .fx-form-rest {display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+ #flex-black-preview .fx-form-rest input {width:75px;flex-shrink:0;}
+ #flex-black-preview .fx-form-rest span {font-size:12px;color:var(--fx-text);}
+ #flex-black-preview .fx-rest-sound {display:flex;align-items:center;gap:8px;min-height:44px;font-size:11px;color:var(--fx-muted);margin-top:9px;}
+ #flex-black-preview .fx-rest-sound input {width:16px;height:16px;accent-color:var(--fx-text);}
+ #flex-black-preview .fx-workout-actions {display:flex;flex-direction:column;gap:10px;margin-top:24px;}
+ #flex-black-preview .fx-workout-actions .fx-muted {text-align:center;}
+ #flex-black-preview .fx-form {background:var(--fx-panel);border:1px solid var(--fx-line);border-radius:var(--fx-radius);padding:18px;}
+ #flex-black-preview .fx-form label {display:flex;flex-direction:column;gap:8px;margin:0 0 18px;font-size:12px;color:var(--fx-muted);}
+ #flex-black-preview .fx-form input,#flex-black-preview .fx-form select {width:100%;min-width:0;min-height:46px;padding:10px;background:var(--fx-bg);border:1px solid var(--fx-line);border-radius:7px;color:var(--fx-text);font-size:16px;}
+ #flex-black-preview .fx-form-actions {display:flex;gap:9px;}
+ #flex-black-preview .fx-form-actions .fx-secondary {flex:1;}
+ #flex-black-preview .fx-form-actions .fx-primary {flex:2;width:auto;}
+ #flex-black-preview .fx-done-banner {padding:13px 15px;background:var(--fx-panel);border-left:2px solid var(--fx-text);margin-bottom:20px;display:flex;gap:10px;align-items:center;}
+ #flex-black-preview .fx-detail-row {display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--fx-line);padding:14px 0;gap:10px;}
+ #flex-black-preview .fx-detail-row span:last-child {font-size:12px;color:var(--fx-muted);font-variant-numeric:tabular-nums;}
+ #flex-black-preview .fx-error {font-size:12px;color:#ffbdbd;margin-bottom:12px;}
+ #flex-black-preview .fx-hero-title {overflow-wrap:anywhere;}
+ #flex-black-preview .fx-preset {border:1px solid var(--fx-line);background:var(--fx-panel);border-radius:var(--fx-radius);padding:17px;margin-top:13px;}
+ #flex-black-preview .fx-preset h2 {overflow-wrap:anywhere;}
+ #flex-black-preview .fx-preset-top {display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+ #flex-black-preview .fx-preset-icon {width:35px;height:35px;border:1px solid var(--fx-line);border-radius:8px;display:grid;place-items:center;flex-shrink:0;}
+ #flex-black-preview .fx-preset-actions {display:grid;grid-template-columns:1fr 1.25fr;gap:9px;margin-top:15px;}
+ #flex-black-preview .fx-preset-actions .fx-primary {min-height:44px;font-size:12px;padding:9px;}
+ #flex-black-preview .fx-preset-list {font-size:11px;color:var(--fx-muted);margin-top:9px;overflow-wrap:anywhere;}
+ #flex-black-preview .fx-name-field {display:flex;flex-direction:column;gap:7px;font-size:12px;color:var(--fx-muted);margin:0 0 22px;}
+ #flex-black-preview .fx-editor input {min-width:0;width:100%;border:1px solid var(--fx-line);background:var(--fx-panel);color:var(--fx-text);border-radius:7px;padding:10px;font-size:16px;min-height:45px;}
+ #flex-black-preview .fx-editor-exercise {padding:17px 0;border-bottom:1px solid var(--fx-line);}
+ #flex-black-preview .fx-editor-exercise h2 {font-size:15px;overflow-wrap:anywhere;}
+ #flex-black-preview .fx-editor-remove {width:44px;height:44px;display:grid;place-items:center;color:var(--fx-muted);flex-shrink:0;}
+ #flex-black-preview .fx-editor-fields {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;}
+ #flex-black-preview .fx-editor-fields label {display:flex;flex-direction:column;gap:6px;color:var(--fx-muted);font-size:11px;}
+ #flex-black-preview .fx-editor-fields input {text-align:center;}
+ #flex-black-preview .fx-add-exercise {width:100%;margin-top:18px;border-style:dashed;}
+ #flex-black-preview .fx-catalog-item {display:flex;align-items:center;gap:12px;width:100%;padding:15px 0;border-bottom:1px solid var(--fx-line);text-align:left;min-height:67px;}
+ #flex-black-preview .fx-catalog-item .fx-catalog-text {flex:1;}
+ #flex-black-preview .fx-catalog-item .fx-muted {display:block;}
+ #flex-black-preview .fx-picker-heading {display:flex;justify-content:space-between;align-items:center;gap:10px;}
+ #flex-black-preview .fx-form-summary {padding:0 0 12px;margin:8px 0 15px;border-bottom:1px solid var(--fx-line);}
+ #flex-black-preview .fx-form-summary p {margin:9px 0;font-size:12px;}
+ #flex-black-preview .fx-form-summary .fx-muted {font-size:11px;}
+ #flex-black-preview .fx-summary-name {overflow-wrap:anywhere;}
+ #flex-black-preview .fx-load-badge {display:inline-flex;align-items:center;gap:6px;color:var(--fx-muted);font-size:11px;margin:8px 0;}
+ #flex-black-preview .fx-load-badge svg {width:15px;height:15px;}
+ #flex-black-preview .fx-load-mode {margin:12px 0;display:flex;flex-direction:column;gap:7px;color:var(--fx-muted);font-size:12px;}
+ #flex-black-preview .fx-load-mode select {min-height:44px;width:100%;border:1px solid var(--fx-line);border-radius:7px;padding:8px 10px;background:var(--fx-panel);color:var(--fx-text);font-size:14px;}
+ #flex-black-preview .fx-editor .fx-rest-value input {width:73px;}
+ #flex-black-preview .fx-editor .fx-set input {padding:10px 5px;}
+ #flex-black-preview .fx-editor .fx-workout-tabs {margin-top:17px;}
+ #flex-black-preview .fx-preset-heading {align-items:flex-start;}
+ #flex-black-preview .fx-target-lines {margin-top:8px;font-size:11px;color:var(--fx-muted);}
+ #flex-black-preview .fx-target-lines p {margin:4px 0;}
+ #flex-black-preview .fx-sr {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+ @media(max-width:360px) {#flex-black-preview {padding:15px 0;}#flex-black-preview .fx-main {padding-left:17px;padding-right:17px;}#flex-black-preview .fx-brand {padding-left:17px;padding-right:17px;}#flex-black-preview .fx-hero-title {font-size:33px;}#flex-black-preview .fx-proto {font-size:9px;}#flex-black-preview .fx-set {gap:6px;}}
+</style>
+<script>
+(() => {
+  const root = document.getElementById('flex-black-preview');
+  const screen = root.querySelector('#fx-screen');
+  const nav = root.querySelector('.fx-nav');
+  const announcement = root.querySelector('#fx-announcement');
+  const defaultRest=90;
+  const templates = {
+    upper:{name:'Upper Body',sub:'อก · หลัง · ไหล่',minutes:45,exercises:[{name:'Bench Press',group:'อก',weight:40,reps:10},{name:'Lat Pulldown',group:'หลัง',weight:35,reps:12},{name:'Shoulder Press',group:'ไหล่',weight:15,reps:10}]},
+    lower:{name:'Lower Body',sub:'ขา · สะโพก',minutes:45,exercises:[{name:'Squat',group:'ขา',weight:40,reps:10},{name:'Romanian Deadlift',group:'สะโพก',weight:35,reps:10},{name:'Leg Press',group:'ขา',weight:60,reps:12}]},
+    full:{name:'Full Body',sub:'ทั่วร่างกาย',minutes:45,exercises:[{name:'Goblet Squat',group:'ขา',weight:16,reps:12},{name:'Dumbbell Row',group:'หลัง',weight:15,reps:12},{name:'Dumbbell Press',group:'อก',weight:12,reps:10}]}
+  };
+  const copy = value => JSON.parse(JSON.stringify(value));
+  Object.values(templates).forEach(t=>t.exercises.forEach(e=>{e.catalogId=e.name.toLowerCase().replaceAll(' ','-');e.setCount=3;e.restSeconds=defaultRest;}));
+  const catalog=Object.values(templates).flatMap(t=>t.exercises).filter((e,i,all)=>all.findIndex(other=>other.catalogId===e.catalogId)===i);
+  catalog.push({catalogId:'push-up',name:'Push-up',group:'อก',weight:0,reps:12,setCount:3,restSeconds:60},{catalogId:'biceps-curl',name:'Biceps Curl',group:'แขน',weight:8,reps:12,setCount:3,restSeconds:60},{catalogId:'triceps-pushdown',name:'Triceps Pushdown',group:'แขน',weight:15,reps:12,setCount:3,restSeconds:60});
+  catalog.push({catalogId:'pull-up',name:'Pull-up',group:'หลัง',weight:0,reps:8,setCount:3,restSeconds:90},{catalogId:'bodyweight-squat',name:'Bodyweight Squat',group:'ขา',weight:0,reps:15,setCount:3,restSeconds:60});
+  catalog.forEach(e=>{e.supportsBodyweight=['push-up','pull-up','bodyweight-squat'].includes(e.catalogId);e.loadMode=e.supportsBodyweight?'bodyweight':'external';});
+  const seedLog = (key,day) => ({id:'sample-'+day,day,name:templates[key].name,partial:false,exercises:templates[key].exercises.map(e=>({...e,sets:Array.from({length:3},()=>({weight:e.weight,reps:e.reps,done:true}))}))});
+  const initial = {view:'programs',day:14,plans:{12:{key:'lower',time:'18:30'},14:{key:'upper',time:'18:30'},16:{key:'full',time:'18:30'}},logs:[seedLog('lower',12),seedLog('upper',10)],draft:null,exercise:0,detailId:null,form:false,editDay:null,justSaved:false,rest:null,undo:null,sound:true,presets:copy(templates),presetEditor:null,assignment:null,presetNotice:null};
+  let state = copy(initial);
+  let lastWrittenPrivate=null;
+  let openSetId=null;
+  let swipeGesture=null;
+  let suppressSwipeClick=false;
+  let audioContext=null;
+  let setSequence=0;
+  const setId=()=> 'set-'+Date.now()+'-'+(++setSequence);
+  const usesWeight=e=>e.loadMode!=='bodyweight';
+  const loadLabel=e=>e.loadMode==='bodyweight'?'น้ำหนักตัว':e.loadMode==='added'?'น้ำหนักตัว + น้ำหนักเพิ่ม':'ใช้น้ำหนัก';
+  const weightLabel=e=>e.loadMode==='added'?'กก. เพิ่ม':'กก.';
+  function normalizeTargets(e){
+    const base=catalog.find(c=>c.catalogId===e.catalogId||c.name===e.name);
+    e.catalogId??=base?.catalogId;e.loadMode??=base?.loadMode||'external';
+    e.supportsBodyweight=Boolean(base?.supportsBodyweight);
+    if(!Array.isArray(e.targets)||!e.targets.length)e.targets=Array.from({length:e.setCount??3},()=>({id:setId(),weight:e.weight??base?.weight??0,reps:e.reps??base?.reps??10}));
+    e.targets.forEach(s=>{s.id??=setId();});e.setCount=e.targets.length;e.reps=e.targets[0].reps;e.weight=e.targets[0].weight;
+    if(e.sets){e.sets.forEach(s=>{s.id??=setId();if(!usesWeight(e))s.weight=null;});}
+    return e;
+  }
+  const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const icon = name => '<i data-lucide="'+name+'" aria-hidden="true"></i>';
+  const button = (action,label,kind='fx-primary',extra='') => '<button type="button" class="'+kind+' cursor-interaction" data-action="'+action+'" '+extra+'>'+label+'</button>';
+  const count = log => log.exercises.reduce((n,e)=>n+e.sets.filter(s=>s.done).length,0);
+  const total = log => log.exercises.reduce((n,e)=>n+e.sets.length,0);
+  const days = ['จ.','อ.','พ.','พฤ.','ศ.','ส.','อา.'];
+  const dayName = day => ({12:'จันทร์',13:'อังคาร',14:'พุธ',15:'พฤหัสบดี',16:'ศุกร์',17:'เสาร์',18:'อาทิตย์'}[day]||'');
+  const plannedSets=t=>t.exercises.reduce((n,e)=>n+(e.targets?.length??e.setCount??3),0);
+  const planTemplate=p=>p?.snapshot||state.presets[p?.key]||templates.upper;
+  const planCompleted=(day,plan)=>Boolean(plan&&state.logs.some(l=>l.day===day&&(l.planId?l.planId===plan.id:!plan.createdAt&&l.name===planTemplate(plan).name)));
+  function packExercise(e){
+    const index=catalog.findIndex(c=>c.catalogId===e.catalogId||c.name===e.name);
+    if(index<0)return e;
+    return [index,e.setCount??3,e.reps,e.restSeconds??defaultRest,e.sets?e.sets.map(s=>[s.id||null,s.weight,s.reps,s.done?1:0,s.restSeconds??null]):null,e.weight??catalog[index].weight,e.targets?e.targets.map(s=>[s.weight,s.reps]):null,e.loadMode||catalog[index].loadMode];
+  }
+  function unpackExercise(e){
+    if(!Array.isArray(e))return e;
+    const item={...copy(catalog[e[0]]),setCount:e[1],reps:e[2],restSeconds:e[3],weight:e[5],loadMode:e[7]||catalog[e[0]].loadMode};
+    if(e[6])item.targets=e[6].map(s=>({weight:s[0],reps:s[1]}));
+    if(e[4])item.sets=e[4].map(s=>({id:s[0],weight:s[1],reps:s[2],done:Boolean(s[3]),...(s[4]===null?{}:{restSeconds:s[4]})}));return item;
+  }
+  const packPreset=t=>({n:t.name,e:t.exercises.map(packExercise)});
+  function unpackPreset(t){const exercises=t.e.map(unpackExercise);return {name:t.n,sub:[...new Set(exercises.map(e=>e.group))].join(' · '),exercises};}
+  function storedState(){
+    const compact=copy(state);
+    compact.presets=Object.fromEntries(Object.entries(state.presets).map(([id,t])=>[id,packPreset(t)]));
+    Object.values(compact.plans).forEach(p=>{p.snapshot=packPreset(p.snapshot);delete p.rests;});
+    compact.logs.forEach(l=>{l.exercises=l.exercises.map(packExercise);});
+    if(compact.draft)compact.draft.exercises=compact.draft.exercises.map(packExercise);
+    if(compact.presetEditor)compact.presetEditor.exercises=compact.presetEditor.exercises.map(packExercise);
+    if(compact.assignment)compact.assignment.snapshot=packPreset(compact.assignment.snapshot);
+    return compact;
+  }
+  function loadedState(compact){
+    const restored=copy(compact);
+    restored.presets=Object.fromEntries(Object.entries(restored.presets).map(([id,t])=>[id,unpackPreset(t)]));
+    Object.values(restored.plans).forEach(p=>{p.snapshot=unpackPreset(p.snapshot);});
+    restored.logs.forEach(l=>{l.exercises=l.exercises.map(unpackExercise);});
+    if(restored.draft)restored.draft.exercises=restored.draft.exercises.map(unpackExercise);
+    if(restored.presetEditor)restored.presetEditor.exercises=restored.presetEditor.exercises.map(unpackExercise);
+    if(restored.assignment)restored.assignment.snapshot=unpackPreset(restored.assignment.snapshot);
+    return restored;
+  }
+  function persist() {
+    if(window.openai?.setWidgetState){
+      const privateContent={version:2,state:storedState()};lastWrittenPrivate=JSON.stringify(privateContent);
+      window.openai.setWidgetState({modelContent:{prototype:'FLEX black wireframe',screen:state.view,selectedDay:state.day,completedSessions:state.logs.length,presetNames:Object.values(state.presets).map(p=>p.name),restStatus:state.rest?.status||'idle',restSeconds:state.draft?.exercises[state.exercise]?.restSeconds??null},privateContent}).catch(()=>{});
+    }
+  }
+  function restore(saved) {
+    if([1,2].includes(saved?.privateContent?.version) && saved.privateContent.state?.plans && Array.isArray(saved.privateContent.state.logs)) state={...copy(initial),...(saved.privateContent.version===2?loadedState(saved.privateContent.state):saved.privateContent.state)};
+    state.presets??=copy(templates);
+    Object.values(state.presets).forEach(t=>t.exercises.forEach(normalizeTargets));
+    Object.entries(state.plans).forEach(([day,p])=>{p.id??='plan-seed-'+day;if(!p.snapshot){p.snapshot=copy(state.presets[p.key]||templates.upper);p.snapshot.exercises.forEach((e,i)=>{e.restSeconds=p.rests?.[i]??e.restSeconds??defaultRest;});}});
+    Object.values(state.plans).forEach(p=>p.snapshot.exercises.forEach(normalizeTargets));
+    if(state.form&&!state.assignment){const p=state.plans[state.editDay];state.assignment={key:p?.key||'upper',day:state.editDay||14,time:p?.time||'18:30',snapshot:copy(p?planTemplate(p):state.presets.upper)};}
+    if(state.draft)state.draft.exercises.forEach((e,i)=>{e.restSeconds??=state.plans[state.draft.day]?.rests?.[i]??defaultRest;normalizeTargets(e);});
+    state.logs.forEach(l=>l.exercises.forEach(normalizeTargets));
+    if(state.presetEditor){state.presetEditor.exercises.forEach(normalizeTargets);state.presetEditor.activeExercise=Math.max(0,Math.min(state.presetEditor.activeExercise??0,state.presetEditor.exercises.length-1));state.presetEditor.undoTarget??=null;}
+    if(state.assignment)state.assignment.snapshot.exercises.forEach(normalizeTargets);
+    if(state.rest?.status==='running'&&state.rest.endAt<=Date.now())state.rest.status='done';
+  }
+  restore(window.openai?.widgetState);
+  window.addEventListener('openai:set_globals',e=>{const saved=e.detail?.globals?.widgetState;if(saved&&JSON.stringify(saved.privateContent)!==lastWrittenPrivate){restore(saved);render();}});
+  function head(title,subtitle,action='') {return '<div class="fx-page-head"><div><h1>'+title+'</h1><p class="fx-muted">'+subtitle+'</p></div>'+action+'</div>';}
+  function setDescription(e,s){return usesWeight(e)?s.weight+' '+(e.loadMode==='added'?'กก. เพิ่ม':'กก.')+' × '+s.reps+' ครั้ง':s.reps+' ครั้ง · น้ำหนักตัว';}
+  function targetLines(e){return '<div class="fx-target-lines">'+e.targets.map((s,i)=>'<p>เซต '+(i+1)+': '+setDescription(e,s)+'</p>').join('')+'</div>';}
+  function exercises(t) {return t.exercises.map((e,i)=>'<div class="fx-exercise"><span class="fx-index">'+String(i+1).padStart(2,'0')+'</span><div><p class="fx-exercise-title">'+escape(e.name)+'</p><p class="fx-muted">'+escape(e.group)+' · '+e.targets.length+' เซต · '+loadLabel(e)+'</p>'+targetLines(e)+'<p class="fx-muted">พัก '+(e.restSeconds??defaultRest)+' วินาที / เซต</p></div><span class="fx-round fx-right">'+icon(usesWeight(e)?'dumbbell':'person-standing')+'</span></div>').join('');}
+  function unlockAudio(){
+    if(!state.sound)return;
+    try{const Audio=window.AudioContext||window.webkitAudioContext;if(Audio&&!audioContext)audioContext=new Audio();if(audioContext?.state==='suspended')audioContext.resume().catch(()=>{});}catch{}
+  }
+  function playRestAlert(){
+    if(!state.sound||!audioContext||audioContext.state!=='running')return;
+    try{[0,.22,.44].forEach(offset=>{const start=audioContext.currentTime+offset;const oscillator=audioContext.createOscillator();const gain=audioContext.createGain();oscillator.type='sine';oscillator.frequency.value=880;gain.gain.setValueAtTime(0,start);gain.gain.linearRampToValueAtTime(.12,start+.015);gain.gain.exponentialRampToValueAtTime(.001,start+.16);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start(start);oscillator.stop(start+.18);});}catch{}
+  }
+  const remaining=()=>state.rest?.status==='running'?Math.max(0,Math.ceil((state.rest.endAt-Date.now())/1000)):0;
+  const clock=seconds=>String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');
+  function restPanel(){
+    const rest=state.rest;if(!rest)return '';
+    const done=rest.status==='done',left=remaining();
+    return '<section class="fx-rest" id="fx-rest-panel" data-status="'+rest.status+'" aria-label="เวลาพักระหว่างเซต"><p class="fx-rest-heading">'+icon(done?'bell-ring':'timer')+(done?'พักครบแล้ว':'กำลังพักระหว่างเซต')+'</p><p class="fx-muted">'+escape(rest.exerciseName)+' · หลังเซต '+rest.setNumber+'</p><div class="fx-rest-main">'+(done?'<p role="status">พร้อมเริ่มเซตถัดไป</p>':'<span class="fx-rest-clock" role="timer" aria-label="เวลาพักที่เหลือ" aria-live="off">'+clock(left)+'</span>')+button('dismiss-rest',done?'รับทราบ':'ข้ามพัก','fx-secondary')+'</div>'+(done?'':'<div class="fx-rest-meter"><span style="width:'+(left/rest.seconds*100)+'%"></span></div>')+'</section>';
+  }
+  function startRest(exercise,set,index){
+    state.rest=exercise.restSeconds>0?{status:'running',endAt:Date.now()+exercise.restSeconds*1000,seconds:exercise.restSeconds,exerciseName:exercise.name,setId:set.id,setNumber:index+1}:null;
+    if(state.rest)announcement.textContent='เริ่มพัก '+exercise.restSeconds+' วินาที หลัง '+exercise.name+' เซต '+(index+1);
+  }
+  function refreshRest(){
+    if(state.rest?.status!=='running')return;
+    if(remaining()===0){state.rest.status='done';announcement.textContent='หมดเวลาพัก พร้อมเริ่มเซตถัดไป';playRestAlert();const panel=screen.querySelector('#fx-rest-panel');if(panel){panel.outerHTML=restPanel();if(globalThis.lucide)lucide.createIcons({attrs:{width:19,height:19}});}persist();}
+    else{const display=screen.querySelector('.fx-rest-clock'),bar=screen.querySelector('.fx-rest-meter span');if(display)display.textContent=clock(remaining());if(bar)bar.style.width=(remaining()/state.rest.seconds*100)+'%';}
+  }
+  function today() {
+    const plan=state.plans[14], t=plan?planTemplate(plan):null;
+    const completed=planCompleted(14,plan);
+    return head('วันนี้','พุธ 14 ต.ค. 2569', '<span class="fx-outline-icon" aria-hidden="true">'+icon('dumbbell')+'</span>')+
+      (completed?'<div class="fx-done-banner">'+icon('check-circle-2')+'<div><p>บันทึกการฝึกวันนี้แล้ว</p><p class="fx-muted">ดูรายละเอียดได้ในประวัติ</p></div></div>':'')+
+      (t?'<div class="fx-hero"><div class="fx-hero-top"><span class="fx-eyebrow">YOUR NEXT SESSION</span><span class="fx-tag">'+escape(plan.time)+'</span></div><div class="fx-hero-title">'+escape(t.name).toUpperCase().replace(' ','<br>')+'</div><p class="fx-muted">'+escape(t.sub)+'</p><div class="fx-facts"><div class="fx-fact"><strong>'+t.exercises.length+'</strong><span>ท่าฝึก</span></div><div class="fx-fact"><strong>'+plannedSets(t)+'</strong><span>เซตตามแผน</span></div></div>'+button('start',icon(state.draft?'play':'arrow-up-right')+(state.draft?'ฝึกต่อจากที่ค้างไว้':'เริ่มออกกำลังกาย'))+'</div><div class="fx-section"><h2>ท่าฝึกในโปรแกรม</h2>'+button('edit-today','เปลี่ยนโปรแกรม '+icon('arrow-right'),'fx-text-btn')+'</div>'+exercises(t):'<div class="fx-empty">'+icon('calendar-plus')+'<h2>วันนี้ยังไม่มีโปรแกรม</h2><p class="fx-muted">เลือกโปรแกรมสำหรับการฝึกครั้งถัดไป</p>'+button('edit-today','เลือกโปรแกรม')+'</div>');
+  }
+  function schedule() {
+    const plan=state.plans[state.day], t=plan?planTemplate(plan):null;
+    const isDone=planCompleted(state.day,plan);
+    return head('ตารางฝึก','วางแผน แล้วทำให้เป็นกิจวัตร')+'<div class="fx-line-head"><h2>ตุลาคม 2569</h2><span class="fx-muted">12–18 ต.ค.</span></div><div class="fx-week">'+days.map((name,i)=>'<button type="button" class="fx-day cursor-interaction" data-day="'+(i+12)+'" data-today="'+(i+12===14)+'" aria-pressed="'+(state.day===i+12)+'" aria-label="'+name+' '+(i+12)+' ตุลาคม"><span>'+name+'</span><b>'+(i+12)+'</b><i style="'+(state.plans[i+12]?'':'visibility:hidden')+'"></i></button>').join('')+'</div><div class="fx-section"><h2>'+dayName(state.day)+' '+state.day+' ต.ค.</h2>'+button('add-plan',icon(plan?'pencil':'plus')+(plan?'แก้ไข':'เพิ่ม'),'fx-text-btn')+'</div>'+
+      (t?'<div class="fx-plan"><span class="fx-time">'+escape(plan.time)+'</span><div class="fx-plan-box"><span class="fx-tag">'+(isDone?'ฝึกแล้ว':'ตามแผน')+'</span><h2 class="fx-summary-name">'+escape(t.name)+'</h2><p class="fx-muted">'+escape(t.sub)+'</p><p class="fx-muted">'+t.exercises.length+' ท่า · '+plannedSets(t)+' เซต</p>'+button('plan-detail','ดูท่าฝึก '+icon('arrow-right'),'fx-secondary')+'</div></div>':'<div class="fx-empty">'+icon('calendar-plus')+'<h2>วันว่างของคุณ</h2><p class="fx-muted">เลือกโปรแกรมที่บันทึกไว้ลงตาราง</p>'+button('add-plan',icon('plus')+'เลือกโปรแกรม')+'</div>')+'<p class="fx-note">'+icon('circle-dot')+'จุดใต้วันที่แสดงวันที่มีโปรแกรมฝึก</p>';
+  }
+  function planDetail() {
+    const p=state.plans[state.day],t=planTemplate(p);
+    return button('back-schedule',icon('arrow-left')+'กลับไปตาราง','fx-back')+head(escape(t.name),dayName(state.day)+' '+state.day+' ต.ค. · '+escape(p.time))+exercises(t)+'<div class="fx-workout-actions">'+(state.day===14?button('start',icon('play')+'เริ่มออกกำลังกาย'):'')+button('add-plan',icon('calendar-days')+'แก้ไขตาราง','fx-secondary')+'</div>';
+  }
+  function openAssignment(day,key=null){
+    const plan=state.plans[day],selected=key||plan?.key||Object.keys(state.presets)[0];
+    state.editDay=day;state.assignment={key:selected,day,time:plan?.time||'18:30',snapshot:copy(key?state.presets[key]:plan?planTemplate(plan):state.presets[selected])};state.form=true;
+  }
+  function form() {
+    const a=state.assignment;
+    return button('cancel-form',icon('arrow-left')+'ย้อนกลับ','fx-back')+head('ลงตารางฝึก','เลือก Preset แล้วกำหนดวันและเวลา')+'<form class="fx-form" id="fx-plan-form"><label>โปรแกรมที่บันทึกไว้<select name="program" aria-label="โปรแกรมฝึก">'+Object.entries(state.presets).map(([key,t])=>'<option value="'+escape(key)+'" '+(a.key===key?'selected':'')+'>'+escape(t.name)+'</option>').join('')+'</select></label><label>วันฝึก<select name="plan-day" aria-label="วันฝึก">'+days.map((d,i)=>'<option value="'+(i+12)+'" '+(a.day===i+12?'selected':'')+'>'+dayName(i+12)+' '+(i+12)+' ต.ค. 2569</option>').join('')+'</select></label><label>เวลา<input type="time" name="time" aria-label="เวลาฝึก" value="'+escape(a.time)+'" required></label><div id="fx-assignment-summary">'+assignmentSummary(a.snapshot)+'</div><p class="fx-rest-hint">ใช้ค่าเซต จำนวนครั้ง และเวลาพักจาก Preset นี้</p><div id="fx-plan-warning" class="fx-error" role="status">'+replacementNote(a)+'</div><div class="fx-form-actions">'+button('cancel-form','ยกเลิก','fx-secondary')+'<button type="button" class="fx-primary cursor-interaction" data-action="save-plan">บันทึกตาราง</button></div></form>';
+  }
+  function replacementNote(a){return state.plans[a.day]?'วันที่เลือกมีโปรแกรมอยู่แล้ว การบันทึกจะแทนที่รายการเดิม':'';}
+  function assignmentSummary(t){return '<div class="fx-form-summary">'+t.exercises.map(e=>'<div class="fx-summary-name"><p>'+escape(e.name)+'</p>'+targetLines(e)+'<p class="fx-muted">พัก '+e.restSeconds+' วินาที / เซต</p></div>').join('')+'</div>';}
+  function programs(){
+    return head('โปรแกรมฝึก','สร้าง Preset เก็บไว้ แล้วค่อยลงตาราง')+
+      button('new-preset',icon('plus')+'สร้างโปรแกรม')+
+      (state.presetNotice?'<div class="fx-done-banner" style="margin:17px 0 0">'+icon('check-circle-2')+'<div><p>บันทึกโปรแกรมแล้ว</p><p class="fx-muted">'+escape(state.presetNotice)+'</p></div></div>':'')+
+      '<div class="fx-section"><h2>โปรแกรมของฉัน</h2><span class="fx-muted">'+Object.keys(state.presets).length+' โปรแกรม</span></div>'+
+      Object.entries(state.presets).map(([id,t])=>'<section class="fx-preset"><div class="fx-preset-top"><div><h2>'+escape(t.name)+'</h2><p class="fx-muted">'+t.exercises.length+' ท่า · '+plannedSets(t)+' เซต</p></div><span class="fx-preset-icon">'+icon('dumbbell')+'</span></div><p class="fx-preset-list">'+escape(t.exercises.slice(0,2).map(e=>e.name).join(' · '))+(t.exercises.length>2?' และอีก '+(t.exercises.length-2)+' ท่า':'')+'</p><div class="fx-preset-actions"><button type="button" class="fx-secondary cursor-interaction" data-edit-preset="'+escape(id)+'">'+icon('pencil')+'แก้ไข</button><button type="button" class="fx-primary cursor-interaction" data-schedule-preset="'+escape(id)+'">'+icon('calendar-plus')+'ลงตาราง</button></div></section>').join('');
+  }
+  function openPresetEditor(id=null){
+    const preset=id?state.presets[id]:{name:'',exercises:[]};
+    state.presetEditor={id,name:preset.name,exercises:copy(preset.exercises).map(normalizeTargets),activeExercise:0,undoTarget:null};state.view='preset-editor';state.presetNotice=null;state.form=false;
+  }
+  function editor(){
+    const editor=state.presetEditor;
+    if(!editor){state.view='programs';return programs();}
+    const e=editor.exercises[editor.activeExercise];
+    return button('back-programs',icon('arrow-left')+'กลับไปโปรแกรม','fx-back')+
+      head(editor.id?'แก้ไขโปรแกรม':'สร้างโปรแกรม','กำหนดน้ำหนักและจำนวนครั้งแยกแต่ละเซต')+
+      '<form class="fx-editor" id="fx-preset-form"><label class="fx-name-field">ชื่อโปรแกรม<input type="text" id="fx-preset-name" aria-label="ชื่อโปรแกรม" placeholder="เช่น วันอกและแขน" maxlength="40" value="'+escape(editor.name)+'" required></label>'+
+      '<div class="fx-line-head"><h2>ท่าออกกำลังกาย</h2><span class="fx-muted">'+editor.exercises.length+' ท่า</span></div>'+
+      (e?'<div class="fx-workout-tabs" aria-label="เลือกท่าที่จัดโปรแกรม">'+editor.exercises.map((item,i)=>'<button type="button" class="cursor-interaction" data-editor-exercise="'+i+'" aria-pressed="'+(i===editor.activeExercise)+'">ท่าที่ '+(i+1)+'</button>').join('')+'</div>'+
+        '<div class="fx-line-head fx-preset-heading"><div><p class="fx-eyebrow">EXERCISE '+String(editor.activeExercise+1).padStart(2,'0')+'</p><h2 style="font-size:24px;margin-top:4px">'+escape(e.name)+'</h2></div><button type="button" class="fx-editor-remove cursor-interaction" data-remove-exercise="'+editor.activeExercise+'" aria-label="นำ '+escape(e.name)+' ออกจากโปรแกรม">'+icon('trash-2')+'</button></div>'+
+        (e.supportsBodyweight?'<label class="fx-load-mode">รูปแบบน้ำหนัก<select id="fx-preset-load-mode" aria-label="รูปแบบน้ำหนัก '+escape(e.name)+'"><option value="bodyweight" '+(e.loadMode==='bodyweight'?'selected':'')+'>น้ำหนักตัว</option><option value="added" '+(e.loadMode==='added'?'selected':'')+'>น้ำหนักตัว + น้ำหนักเพิ่ม</option></select></label>':'<p class="fx-load-badge">'+icon('dumbbell')+escape(e.group)+' · '+loadLabel(e)+'</p>')+
+        '<div class="fx-rest-setting"><label for="fx-preset-rest">'+icon('timer')+'พักต่อเซต</label><span class="fx-rest-value"><input id="fx-preset-rest" type="number" min="0" max="600" step="1" inputmode="numeric" value="'+e.restSeconds+'" aria-label="เวลาพัก '+escape(e.name)+' วินาที" required><span>วินาที</span></span></div>'+
+        '<div class="fx-record"><p class="fx-swipe-hint">'+icon('move-left')+'ปัดแถวไปทางซ้ายเพื่อลบเซต</p>'+setHeader(e,true)+e.targets.map((set,i)=>setRow(e,set,i,true)).join('')+'</div>'+
+        (editor.undoTarget?'<div class="fx-undo" role="status"><span>ลบเซต '+(editor.undoTarget.index+1)+' แล้ว</span>'+button('undo-target','เลิกทำ','fx-text-btn')+'</div>':'')+
+        button('add-target',icon('plus')+'เพิ่มเซต','fx-text-btn',e.targets.length>=8?'disabled':''):
+      '<div class="fx-empty"><p>เริ่มจากเลือกท่าออกกำลังกาย</p><p class="fx-muted">แล้วกำหนดจำนวนเซต ครั้ง และเวลาพัก</p></div>')+
+      button('choose-exercise',icon('plus')+'เพิ่มท่าออกกำลังกาย','fx-secondary fx-add-exercise',editor.exercises.length>=8?'disabled':'')+
+      '<p class="fx-note">'+icon('timer')+'เวลาพักจะเริ่มนับเมื่อคุณติ๊กว่าเซตสำเร็จ</p><div id="fx-preset-validation" class="fx-error" role="alert"></div><div class="fx-workout-actions">'+button('save-preset',icon('check')+'บันทึกโปรแกรม')+'</div></form>';
+  }
+  function exercisePicker(){
+    const picked=state.presetEditor?.exercises||[];
+    return button('back-editor',icon('arrow-left')+'กลับไปสร้างโปรแกรม','fx-back')+head('เลือกท่าฝึก','เลือกท่าเพื่อเพิ่มลงใน Preset')+catalog.map(e=>{
+      const selected=picked.some(p=>p.catalogId===e.catalogId);
+      return '<button type="button" class="fx-catalog-item cursor-interaction" data-add-exercise="'+e.catalogId+'" '+(selected?'disabled':'')+'><span class="fx-preset-icon">'+icon(e.supportsBodyweight?'person-standing':'dumbbell')+'</span><span class="fx-catalog-text"><span class="fx-exercise-title">'+escape(e.name)+'</span><span class="fx-muted">'+escape(e.group)+' · '+loadLabel(e)+(selected?' · เพิ่มแล้ว':'')+'</span></span>'+icon(selected?'check':'plus')+'</button>';
+    }).join('');
+  }
+  function savePreset(){
+    const form=screen.querySelector('#fx-preset-form');if(!form||!form.reportValidity())return false;
+    const editor=state.presetEditor,name=editor.name.trim();
+    if(!name||!editor.exercises.length){screen.querySelector('#fx-preset-validation').textContent=!name?'กรอกชื่อโปรแกรมก่อนบันทึก':'เลือกท่าออกกำลังกายอย่างน้อย 1 ท่า';return false;}
+    const invalid=editor.exercises.findIndex(e=>!Number.isInteger(e.restSeconds)||e.restSeconds<0||e.restSeconds>600||e.targets.some(s=>!Number.isInteger(s.reps)||s.reps<1||s.reps>999||(usesWeight(e)&&(!Number.isFinite(s.weight)||s.weight<0||s.weight>999||!Number.isInteger(s.weight*2)))));
+    if(invalid>=0){editor.activeExercise=invalid;render();screen.querySelector('#fx-preset-validation').textContent='ตรวจจำนวนครั้ง น้ำหนัก และเวลาพักของแต่ละเซตก่อนบันทึก';return false;}
+    editor.exercises.forEach(normalizeTargets);
+    const id=editor.id||'preset-'+Date.now();
+    const preset={name,sub:[...new Set(editor.exercises.map(e=>e.group))].join(' · '),exercises:copy(editor.exercises)};
+    const others={...state.presets};delete others[id];state.presets={[id]:preset,...others};
+    state.presetEditor=null;state.view='programs';state.presetNotice=name;announcement.textContent='บันทึกโปรแกรม '+name+' แล้ว เลือกลงตารางได้';return true;
+  }
+  function setHeader(exercise,planning=false){return '<div class="fx-set fx-set-label'+(planning?' fx-planning':'')+(!usesWeight(exercise)?' fx-bodyweight':'')+'"><span>เซต</span>'+(usesWeight(exercise)?'<span>'+weightLabel(exercise)+'</span>':'')+'<span>ครั้ง</span>'+(planning?'':'<span>เสร็จ</span>')+'</div>';}
+  function setRow(exercise,set,index,planning=false){
+    const revealed=openSetId===set.id,number=index+1;
+    const deleteId=(planning?'fx-target-delete-':'fx-delete-')+index;
+    return '<div class="fx-swipe'+(revealed?' is-open':'')+'" data-swipe="'+escape(set.id)+'" role="group" aria-label="เซต '+number+'">'+
+      '<button type="button" id="'+deleteId+'" class="fx-delete cursor-interaction" '+(planning?'data-delete-target':'data-delete')+'="'+index+'" aria-label="ลบเซต '+number+'" '+(revealed?'':'hidden')+' '+((planning?exercise.targets:exercise.sets).length===1?'disabled':'')+'>'+icon('trash-2')+'ลบ</button>'+
+      '<div class="fx-set fx-swipe-front'+(planning?' fx-planning':'')+(!usesWeight(exercise)?' fx-bodyweight':'')+'"><button type="button" class="fx-set-options cursor-interaction" data-reveal="'+index+'" aria-expanded="'+revealed+'" aria-controls="'+deleteId+'" aria-label="ตัวเลือกเซต '+number+'">'+number+'</button>'+
+      (usesWeight(exercise)?'<input type="number" min="0" max="999" step="0.5" inputmode="decimal" value="'+set.weight+'" '+(planning?'data-target-set':'data-set')+'="'+index+'" '+(planning?'data-target-field':'data-field')+'="weight" aria-label="'+(exercise.loadMode==='added'?'น้ำหนักเพิ่มเซต ':'น้ำหนักเซต ')+number+' กิโลกรัม" '+(!planning&&set.done?'disabled':'')+' required>':'')+
+      '<input type="number" min="1" max="999" step="1" inputmode="numeric" value="'+set.reps+'" '+(planning?'data-target-set':'data-set')+'="'+index+'" '+(planning?'data-target-field':'data-field')+'="reps" aria-label="จำนวนครั้งเซต '+number+'" '+(!planning&&set.done?'disabled':'')+' required>'+
+      (planning?'':'<button type="button" class="fx-check cursor-interaction" data-check="'+index+'" aria-pressed="'+set.done+'" aria-label="'+(set.done?'ยกเลิกเครื่องหมาย':'ทำเครื่องหมาย')+'เซต '+number+' เสร็จ">'+icon('check')+'</button>')+'</div></div>';
+  }
+  function workout() {
+    const draft=state.draft;
+    if(!draft){state.view='today';return today();}
+    const e=draft.exercises[state.exercise],done=count(draft),all=total(draft);
+    return button('leave-workout',icon('arrow-left')+'พักไว้ก่อน','fx-back')+
+      head('บันทึกการฝึก',escape(draft.name)+' · '+draft.day+' ต.ค. 2569')+
+      restPanel()+
+      '<div class="fx-line-head"><span class="fx-eyebrow">SESSION PROGRESS</span><span class="fx-muted" id="fx-counter">'+done+' / '+all+' เซต</span></div><div class="fx-progress" role="progressbar" aria-label="เซตที่ฝึกเสร็จ" aria-valuenow="'+done+'" aria-valuemax="'+all+'" aria-valuemin="0"><span style="width:'+(done/all*100)+'%"></span></div>'+
+      '<div class="fx-workout-tabs" aria-label="เลือกท่าฝึก">'+draft.exercises.map((item,i)=>'<button type="button" class="cursor-interaction" data-exercise="'+i+'" aria-pressed="'+(i===state.exercise)+'">ท่าที่ '+(i+1)+(item.sets.every(s=>s.done)?' ✓':'')+'</button>').join('')+'</div>'+
+      '<p class="fx-eyebrow">EXERCISE 0'+(state.exercise+1)+'</p><h2 style="font-size:24px;margin:4px 0">'+e.name+'</h2><p class="fx-load-badge">'+icon(usesWeight(e)?'dumbbell':'person-standing')+e.group+' · '+loadLabel(e)+'</p><p class="fx-muted">เริ่มจากเป้าหมายรายเซต ปรับเป็นผลที่ทำจริงได้</p>'+
+      '<div class="fx-rest-setting"><label for="fx-rest-seconds">'+icon('timer')+'พักต่อเซต</label><span class="fx-rest-value"><input id="fx-rest-seconds" type="number" min="0" max="600" step="1" inputmode="numeric" value="'+e.restSeconds+'" aria-label="เวลาพัก '+e.name+' วินาที" required><span>วินาที</span></span></div><p class="fx-rest-hint">ติ๊ก ✓ แล้วเริ่มพักอัตโนมัติ · 0 = ไม่จับเวลา</p>'+
+      '<div class="fx-record"><p class="fx-swipe-hint">'+icon('move-left')+'ปัดแถวไปทางซ้ายเพื่อลบเซต</p>'+setHeader(e)+
+      e.sets.map((set,i)=>setRow(e,set,i)).join('')+'</div>'+
+      (state.undo?'<div class="fx-undo" role="status"><span>ลบเซต '+(state.undo.index+1)+' แล้ว</span>'+button('undo-delete','เลิกทำ','fx-text-btn')+'</div>':'')+
+      '<div id="fx-validation" role="alert" class="fx-error"></div>'+button('add-set',icon('plus')+'เพิ่มเซต','fx-text-btn',e.sets.length>=8?'disabled':'')+
+      '<label class="fx-rest-sound"><input id="fx-sound" type="checkbox" '+(state.sound?'checked':'')+'>เสียงเตือนเมื่อพักครบ</label>'+
+      '<div class="fx-workout-actions">'+(state.exercise<draft.exercises.length-1?button('next-exercise','ท่าถัดไป '+icon('arrow-right'),'fx-secondary'):'')+button('finish',icon('check')+'จบและบันทึกการฝึก','fx-primary',done?'':'disabled')+'<p class="fx-muted">บันทึกเฉพาะเซตที่ทำเครื่องหมายเสร็จ</p></div>';
+  }
+  function history() {
+    return head('ประวัติ','ทุกครั้งที่ฝึก คือความก้าวหน้า')+(state.justSaved?'<div class="fx-done-banner">'+icon('check-circle-2')+'<div><p>บันทึกการฝึกเรียบร้อย</p><p class="fx-muted">เปิดดูผลแต่ละเซตได้ด้านล่าง</p></div></div>':'')+'<div class="fx-history-summary"><strong>'+state.logs.length+'</strong><div><p>ครั้งที่ฝึกในเดือนนี้</p><p class="fx-muted">ตุลาคม 2569</p></div></div><p class="fx-eyebrow">YOUR TRAINING LOG</p>'+state.logs.map(l=>'<button type="button" class="fx-history-item cursor-interaction" data-log="'+l.id+'"><span class="fx-date-block"><b>'+l.day+'</b><span>ต.ค.</span></span><span><span class="fx-exercise-title">'+escape(l.name)+'</span><span class="fx-muted" style="display:block">'+l.exercises.filter(e=>e.sets.some(s=>s.done)).length+' ท่า · '+count(l)+' เซต'+(l.partial?' · ฝึกบางส่วน':' · ฝึกครบ')+'</span></span>'+icon('chevron-right')+'</button>').join('');
+  }
+  function detail() {
+    const log=state.logs.find(l=>l.id===state.detailId);
+    if(!log){state.view='history';return history();}
+    return button('back-history',icon('arrow-left')+'กลับไปประวัติ','fx-back')+head(escape(log.name),log.day+' ตุลาคม 2569 · '+(log.partial?'ฝึกบางส่วน':'ฝึกครบ'))+'<div class="fx-history-summary"><strong>'+count(log)+'</strong><div><p>เซตที่บันทึก</p><p class="fx-muted">'+log.exercises.filter(e=>e.sets.some(s=>s.done)).length+' ท่าที่ฝึกจริง</p></div></div>'+log.exercises.filter(e=>e.sets.some(s=>s.done)).map(e=>'<div class="fx-section"><h2>'+escape(e.name)+'</h2></div>'+e.sets.map((s,i)=>s.done?'<div class="fx-detail-row"><span>เซต '+(i+1)+'</span><span>'+setDescription(e,s)+' '+ '✓</span></div>':'').join('')).join('');
+  }
+  function render() {
+    swipeGesture=null;
+    screen.innerHTML=(state.view!=='workout'||state.form?restPanel():'')+(state.form?form():({today,schedule,programs,workout,history,detail,'plan-detail':planDetail,'preset-editor':editor,'exercise-picker':exercisePicker}[state.view]||today)());
+    nav.hidden=['workout','preset-editor','exercise-picker'].includes(state.view)||state.form;
+    nav.style.display=nav.hidden?'none':'grid';
+    nav.querySelectorAll('[data-nav]').forEach(b=>{const selected=b.dataset.nav===(state.view==='detail'?'history':state.view==='plan-detail'?'schedule':state.view);if(selected)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+    if(globalThis.lucide) lucide.createIcons({attrs:{width:19,height:19}});
+  }
+  function settleSwipe(row,revealed){
+    row.classList.remove('is-dragging');
+    row.classList.toggle('is-open',revealed);
+    row.querySelector('.fx-swipe-front').style.removeProperty('transform');
+    row.querySelector('.fx-delete').hidden=!revealed;
+    row.querySelector('[data-reveal]').setAttribute('aria-expanded',String(revealed));
+  }
+  function revealSwipe(row,revealed){
+    screen.querySelectorAll('.fx-swipe').forEach(other=>settleSwipe(other,other===row&&revealed));
+    openSetId=row&&revealed?row.dataset.swipe:null;
+  }
+  root.addEventListener('pointerdown',event=>{
+    if(!event.isPrimary||event.button!==0)return;
+    const row=event.target.closest('.fx-swipe');
+    if(!row){revealSwipe(null,false);return;}
+    if(event.target.closest('.fx-delete'))return;
+    const initialOpen=openSetId===row.dataset.swipe;
+    swipeGesture={row,pointerId:event.pointerId,x:event.clientX,y:event.clientY,initialOpen,offset:initialOpen?-86:0,dragging:false};
+  });
+  root.addEventListener('pointermove',event=>{
+    const g=swipeGesture;if(!g||event.pointerId!==g.pointerId)return;
+    const dx=event.clientX-g.x,dy=event.clientY-g.y;
+    if(!g.dragging){
+      if(Math.max(Math.abs(dx),Math.abs(dy))<8)return;
+      if(Math.abs(dy)>Math.abs(dx)){swipeGesture=null;return;}
+      if(Math.abs(dx)<Math.abs(dy)*1.2)return;
+      g.dragging=true;
+      screen.querySelectorAll('.fx-swipe').forEach(other=>{if(other!==g.row)settleSwipe(other,false);});
+      g.row.classList.add('is-dragging');
+      try{g.row.setPointerCapture(event.pointerId);}catch{}
+    }
+    if(event.cancelable)event.preventDefault();
+    g.offset=Math.max(-86,Math.min(0,(g.initialOpen?-86:0)+dx));
+    g.row.querySelector('.fx-swipe-front').style.transform='translateX('+g.offset+'px)';
+    g.row.querySelector('.fx-delete').hidden=g.offset===0;
+  },{passive:false});
+  function finishSwipe(event,cancelled){
+    const g=swipeGesture;if(!g||g.pointerId!==event.pointerId)return;
+    swipeGesture=null;
+    if(!g.dragging)return;
+    revealSwipe(g.row,cancelled?g.initialOpen:g.offset<=-30);
+    if(g.row.hasPointerCapture(event.pointerId))g.row.releasePointerCapture(event.pointerId);
+    suppressSwipeClick=true;
+    setTimeout(()=>{suppressSwipeClick=false;},400);
+  }
+  root.addEventListener('pointerup',event=>finishSwipe(event,false));
+  root.addEventListener('pointercancel',event=>finishSwipe(event,true));
+  root.addEventListener('click',event=>{
+    if(suppressSwipeClick&&event.target.closest('.fx-swipe')){suppressSwipeClick=false;event.preventDefault();event.stopImmediatePropagation();return;}
+    if(openSetId&&!event.target.closest('.fx-delete,[data-reveal]'))revealSwipe(null,false);
+  },true);
+  root.addEventListener('click',event=>{
+    const b=event.target.closest('button');if(!b||b.disabled)return;
+    const d=b.dataset;
+    if(d.reveal!==undefined){const row=b.closest('.fx-swipe');revealSwipe(row,openSetId!==row.dataset.swipe);return;}
+    if(d.nav){state.view=d.nav;state.form=false;state.justSaved=false;}
+    else if(d.editPreset){openPresetEditor(d.editPreset);}
+    else if(d.schedulePreset){openAssignment(state.day,d.schedulePreset);}
+    else if(d.addExercise){
+      if(!state.presetEditor||state.presetEditor.exercises.length>=8)return;
+      const exercise=catalog.find(e=>e.catalogId===d.addExercise);
+      if(!exercise||state.presetEditor.exercises.some(e=>e.catalogId===exercise.catalogId))return;
+      state.presetEditor.exercises.push(normalizeTargets(copy(exercise)));state.presetEditor.activeExercise=state.presetEditor.exercises.length-1;state.presetEditor.undoTarget=null;state.view='preset-editor';
+    }
+    else if(d.removeExercise!==undefined){state.presetEditor.exercises.splice(Number(d.removeExercise),1);state.presetEditor.activeExercise=Math.max(0,Math.min(state.presetEditor.activeExercise,state.presetEditor.exercises.length-1));state.presetEditor.undoTarget=null;}
+    else if(d.editorExercise!==undefined){state.presetEditor.activeExercise=Number(d.editorExercise);}
+    else if(d.deleteTarget!==undefined){
+      const editor=state.presetEditor,e=editor.exercises[editor.activeExercise],index=Number(d.deleteTarget);if(e.targets.length<=1)return;
+      openSetId=null;editor.undoTarget={catalogId:e.catalogId,index,target:e.targets.splice(index,1)[0]};e.setCount=e.targets.length;announcement.textContent='ลบเซต '+(index+1)+' แล้ว กดเลิกทำเพื่อคืนเซต';
+    }
+    else if(d.day){state.day=Number(d.day);}
+    else if(d.exercise){state.exercise=Number(d.exercise);}
+    else if(d.log){state.detailId=d.log;state.view='detail';state.justSaved=false;}
+    else if(d.check!==undefined){
+      const i=Number(d.check),exercise=state.draft.exercises[state.exercise],set=exercise.sets[i];
+      if(!set.done){const inputs=[...screen.querySelectorAll('input[data-set="'+i+'"]'),screen.querySelector('#fx-rest-seconds')];if(inputs.some(input=>!input.reportValidity()||input.value==='')){root.querySelector('#fx-validation').textContent='ตรวจข้อมูลของเซตและเวลาพักก่อนทำเครื่องหมาย';return;}unlockAudio();}
+      set.done=!set.done;
+      if(set.done){set.restSeconds=exercise.restSeconds;startRest(exercise,set,i);}
+      else if(state.rest?.setId===set.id)state.rest=null;
+    }
+    else if(d.delete!==undefined){
+      const e=state.draft.exercises[state.exercise],index=Number(d.delete);if(e.sets.length<=1)return;
+      openSetId=null;
+      const removed=e.sets.splice(index,1)[0];state.undo={exercise:state.exercise,index,set:removed,session:state.draft.id};
+      if(state.rest?.setId===removed.id)state.rest=null;
+      else if(state.rest?.exerciseName===e.name)state.rest.setNumber=e.sets.findIndex(s=>s.id===state.rest.setId)+1;
+      announcement.textContent='ลบเซต '+(index+1)+' แล้ว กดเลิกทำเพื่อคืนเซต';
+    }
+    else switch(d.action){
+      case 'new-preset':openPresetEditor();break;
+      case 'back-programs':state.view='programs';break;
+      case 'choose-exercise':state.view='exercise-picker';break;
+      case 'back-editor':state.view='preset-editor';break;
+      case 'save-preset':if(!savePreset())return;break;
+      case 'add-target':{
+        const editor=state.presetEditor,e=editor.exercises[editor.activeExercise],last=e.targets[e.targets.length-1];if(e.targets.length<8){e.targets.push({id:setId(),weight:last.weight,reps:last.reps});e.setCount=e.targets.length;}break;
+      }
+      case 'undo-target':{
+        const editor=state.presetEditor,undo=editor.undoTarget;if(!undo)return;
+        const index=editor.exercises.findIndex(e=>e.catalogId===undo.catalogId);if(index<0)return;
+        const e=editor.exercises[index];if(e.targets.length>=8){announcement.textContent='คืนเซตไม่ได้ ขณะนี้มีครบ 8 เซตแล้ว';return;}
+        e.targets.splice(undo.index,0,undo.target);e.setCount=e.targets.length;editor.activeExercise=index;editor.undoTarget=null;announcement.textContent='คืนเซตที่ลบแล้ว';break;
+      }
+      case 'edit-today':openAssignment(14);break;
+      case 'add-plan':openAssignment(state.day);break;
+      case 'cancel-form':state.form=false;state.assignment=null;break;
+      case 'save-plan':{if(!savePlan())return;break;}
+      case 'dismiss-rest':state.rest=null;break;
+      case 'undo-delete':{
+        const undo=state.undo;if(!undo||undo.session!==state.draft?.id)return;
+        const exercise=state.draft.exercises[undo.exercise];
+        if(exercise.sets.length>=8){announcement.textContent='คืนเซตไม่ได้ ขณะนี้มีครบ 8 เซตแล้ว';return;}
+        exercise.sets.splice(undo.index,0,undo.set);state.exercise=undo.exercise;
+        if(state.rest?.exerciseName===exercise.name)state.rest.setNumber=exercise.sets.findIndex(s=>s.id===state.rest.setId)+1;
+        state.undo=null;announcement.textContent='คืนเซตที่ลบแล้ว';break;
+      }
+      case 'plan-detail': state.view='plan-detail';break;
+      case 'back-schedule': state.view='schedule';break;
+      case 'back-history': state.view='history';break;
+      case 'start': {
+        if(!state.draft){const plan=state.plans[14],t=planTemplate(plan);state.draft={id:'session-'+Date.now(),planId:plan.id,day:14,name:t.name,partial:false,exercises:t.exercises.map(e=>({...copy(e),restSeconds:e.restSeconds??defaultRest,sets:e.targets.map(target=>({id:setId(),weight:usesWeight(e)?target.weight:null,reps:target.reps,done:false}))}))};state.exercise=0;state.rest=null;state.undo=null;}
+        state.view='workout';break;
+      }
+      case 'leave-workout':state.view='today';announcement.textContent='พักการฝึกไว้แล้ว กดฝึกต่อจากที่ค้างไว้เพื่อกลับมา';break;
+      case 'add-set':{const e=state.draft.exercises[state.exercise],last=e.sets[e.sets.length-1];if(e.sets.length<8)e.sets.push({id:setId(),weight:usesWeight(e)?last.weight:null,reps:last.reps,done:false});break;}
+      case 'next-exercise':state.exercise=Math.min(state.draft.exercises.length-1,state.exercise+1);break;
+      case 'finish':{
+        if(!count(state.draft))return;
+        const log=copy(state.draft);log.partial=count(log)!==total(log);state.logs.unshift(log);state.draft=null;state.rest=null;state.undo=null;state.view='history';state.justSaved=true;announcement.textContent='บันทึกการฝึก '+count(log)+' เซตเรียบร้อย';break;
+      }
+      default:return;
+    }
+    render();persist();
+  });
+  root.addEventListener('input',event=>{
+    const input=event.target;
+    if(input.id==='fx-preset-name'&&state.presetEditor){state.presetEditor.name=input.value;persist();}
+    if(input.dataset.targetField&&state.presetEditor){const e=state.presetEditor.exercises[state.presetEditor.activeExercise];e.targets[Number(input.dataset.targetSet)][input.dataset.targetField]=input.value===''?'':Number(input.value);persist();}
+    if(input.id==='fx-preset-rest'&&state.presetEditor){state.presetEditor.exercises[state.presetEditor.activeExercise].restSeconds=input.value===''?'':Number(input.value);persist();}
+    if(input.name==='time'&&state.assignment){state.assignment.time=input.value;persist();}
+    if(input.matches('[data-field]')&&state.draft){state.draft.exercises[state.exercise].sets[Number(input.dataset.set)][input.dataset.field]=input.value===''?'':Number(input.value);persist();}
+    if(input.id==='fx-rest-seconds'&&state.draft&&input.value!==''&&input.validity.valid){state.draft.exercises[state.exercise].restSeconds=Number(input.value);persist();}
+  });
+  root.addEventListener('change',event=>{
+    const input=event.target;
+    if(input.id==='fx-preset-load-mode'&&state.presetEditor){state.presetEditor.exercises[state.presetEditor.activeExercise].loadMode=input.value;render();persist();}
+    if(input.id==='fx-sound'){state.sound=input.checked;if(state.sound)unlockAudio();persist();}
+    if(input.name==='program'&&state.assignment){state.assignment.key=input.value;state.assignment.snapshot=copy(state.presets[input.value]);screen.querySelector('#fx-assignment-summary').innerHTML=assignmentSummary(state.assignment.snapshot);persist();}
+    if(input.name==='plan-day'&&state.assignment){state.assignment.day=Number(input.value);screen.querySelector('#fx-plan-warning').textContent=replacementNote(state.assignment);persist();}
+  });
+  function savePlan(){
+    const form=screen.querySelector('#fx-plan-form');if(!form||!form.reportValidity())return false;
+    const fields=new FormData(form),day=Number(fields.get('plan-day'));
+    state.plans[day]={id:'plan-'+Date.now(),createdAt:Date.now(),key:fields.get('program'),time:fields.get('time'),snapshot:copy(state.assignment.snapshot)};state.day=day;state.form=false;state.assignment=null;state.view='schedule';announcement.textContent='บันทึกโปรแกรมวันที่ '+state.day+' ตุลาคมแล้ว';return true;
+  }
+  root.addEventListener('keydown',event=>{
+    if(event.key==='Enter'&&event.target.closest('#fx-plan-form')){event.preventDefault();if(savePlan()){render();persist();}}
+    if(event.key==='Enter'&&event.target.closest('#fx-preset-form')){event.preventDefault();if(savePreset()){render();persist();}}
+    if(event.target.matches('[data-reveal]')&&['ArrowLeft','ArrowRight','Escape'].includes(event.key)){event.preventDefault();revealSwipe(event.target.closest('.fx-swipe'),event.key==='ArrowLeft');}
+    else if(event.key==='Escape'&&openSetId){revealSwipe(null,false);}
+  });
+  render();
+  const ticker=setInterval(()=>{if(!root.isConnected){clearInterval(ticker);if(audioContext)audioContext.close().catch(()=>{});return;}refreshRest();},250);
+  if(globalThis.Tweak){
+    const design={radius:12,surface:'#171717'};
+    const phone=root.querySelector('.fx-phone');
+    const tweak=new Tweak({container:phone,onChange:()=>{phone.style.setProperty('--fx-radius',design.radius+'px');phone.style.setProperty('--fx-panel',design.surface);}});
+    tweak.addSlider(design,'radius',{label:'ความโค้งมุม',min:4,max:20,step:2,unit:'px'});
+    tweak.addColorPicker(design,'surface',{label:'สีพื้นการ์ด',reference:'--fx-panel'});
+  }
+})();
+</script>
