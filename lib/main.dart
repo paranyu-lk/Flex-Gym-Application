@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/programs_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,7 +40,6 @@ class _MyAppState extends State<MyApp> {
           onSecondaryContainer: Color(0xFFF5F5F3),
           surface: Color(0xFFF0F0F0),
           onSurface: Color(0xFF171717),
-          
         ),
         scaffoldBackgroundColor: const Color(0xFFFAFAFA),
       ),
@@ -66,7 +67,6 @@ class MyHomePage extends StatefulWidget {
     required this.onToggleTheme,
   });
 
-
   final String title;
   final VoidCallback onToggleTheme;
 
@@ -86,12 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(_pageTitles[_selectedIndex]),
       ),
-      body: Center(
-        child: Text(
-          _pageTitles[_selectedIndex],
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-      ),
+      body: switch (_selectedIndex) {
+        1 => const ProgramsPage(),
+        _ => Center(
+              child: Text(
+                _pageTitles[_selectedIndex],
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+      },
       bottomNavigationBar: NavigationBar(
         backgroundColor: Theme.of(context).colorScheme.surface,
         indicatorColor: Theme.of(context).colorScheme.primary,
